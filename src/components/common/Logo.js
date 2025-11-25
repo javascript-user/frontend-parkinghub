@@ -5,7 +5,9 @@ function Logo({ className, inverted }) {
 
   return (
     <div className={finalClassNames}>
-      <div className={`${inverted && "text-white"} font-bold text-black`} >Parking</div>
+      <div className={`${inverted && "text-white"} font-bold text-black`}>
+        Parking
+      </div>
       <div className="ml-1 bg-[#ffa31a] text-white rounded-md px-1">hub</div>
     </div>
   );
