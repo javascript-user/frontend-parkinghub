@@ -1,16 +1,15 @@
-import React from 'react';
-import Section from './Section/Section';
-import SlideBar from "./SlideBar/SlideBar";
-import SectionComps from "./SectionComps/SectionComps";
+import Hero from "./Hero/Hero";
+import Testimonials from "./Testimonials/Testimonials";
+import Services from "./Services/Services";
 
- function MainContent() {
+function MainContent() {
   return (
-    <main className="w-full h-full">
-      <Section />
-      <SlideBar />
-     <SectionComps /> 
+    <main className="flex flex-col flex-1 ">
+      <Hero />
+      <Testimonials />
+      <Services />
     </main>
-  ) 
+  );
 }
 
 export default MainContent;

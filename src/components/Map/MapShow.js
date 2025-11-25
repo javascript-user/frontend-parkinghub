@@ -8,7 +8,6 @@ import {
   useMapEvent,
 } from "react-leaflet";
 import { Icon } from "leaflet";
-import predefinedNearbyPlaces from "../../Services/place-api";
 import RoutingMachine from "./RoutingMachine";
 import useMapContext from "../../hooks/use-MapContext";
 
@@ -18,7 +17,7 @@ const parkingIcon = new Icon({
 });
 
 function MapShow() {
-  const { waypoints, setWaypoints } = useMapContext();
+  const { waypoints } = useMapContext();
   const { location, setLocation } = useMapContext();
   const [citiesLocation, setCitiesLocation] = useState([]);
 
@@ -39,32 +38,36 @@ function MapShow() {
   // the block of code render predefined location on map with marker
   try {
     useEffect(() => {
-      setCitiesLocation(predefinedNearbyPlaces);
+      setCitiesLocation();
     }, [location, waypoints]);
   } catch (error) {
     console.log(error);
   }
-
-  // // Handle click on parking card
-  // function handleCardClick(predefinedNearbyPlaces) {
-  //   if (!location) {
-  //     alert("User location is not available yet!");
-  //     return;
-  //   }
-  //   setWaypoints(waypoints); // Update waypoints state
-  // }
 
   return (
     <>
       <MapContainer
         center={location}
         zoom={12}
+        minZoom={2}
+        maxBounds={[
+          [-90, -180],
+          [90, 180],
+        ]}
+        maxZoom={18}
+        maxBoundsViscosity={1.0}
         scrollWheelZoom={true}
+        worldCopyJump={false}
         className="z-10 w-screen h-screen"
       >
         <TileLayer
           attribution='&copy; <a href="https://www.mapbox.com/">Mapbox</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          noWrap={true}
+          bounds={[
+            [-90, -180],
+            [90, 180],
+          ]}
         />
 
         {location && (

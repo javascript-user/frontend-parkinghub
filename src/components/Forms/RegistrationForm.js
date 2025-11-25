@@ -1,12 +1,12 @@
-import Logo from "../Logo/Logo";
+import Logo from "../common/Logo";
 import gps from "../../assets/images/GPS navigator-bro.svg";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userSignupValidationSchema } from "../../utils/userValidationSchema";
-import { createUser } from "../../Services/user-api";
-import Input from "../Input";
-import Button from "../Button/Button";
+import { createUser } from "../../api/user-api";
+import Input from "../common/Input";
+import Button from "../common/Button";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 

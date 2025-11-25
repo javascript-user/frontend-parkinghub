@@ -1,13 +1,9 @@
-import NavBar from "../components/NavBar/NavBar";
-import AboutSection from "../components/MainContent/Section/AboutSection/AboutSection";
-import Footer from "../components/Footer/Footer";
+import AboutSection from "../components/AboutSection/AboutSection";
 
 function AboutUs() {
   return (
     <div>
-      <NavBar />
       <AboutSection />
-      <Footer />
     </div>
   );
 }

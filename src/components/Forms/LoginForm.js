@@ -1,14 +1,14 @@
-import Logo from "../Logo/Logo";
+import Logo from "../common/Logo";
 import blue from "../../assets/images/blue.svg";
 import { Link } from "react-router-dom";
-import Input from "../Input";
-import Button from "../Button/Button";
+import Input from "../common/Input";
+import Button from "../common/Button";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userLoginValidationSchema } from "../../utils/userValidationSchema";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { loginUser } from "../../Services/user-api";
+import { loginUser } from "../../api/user-api";
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -75,7 +75,7 @@ function LoginForm() {
                 isTouched={touchedFields.password}
               />
              {password && ( <i
-                className="absolute cursor-pointer left-80 bottom-3 "
+                className="absolute cursor-pointer left-52 bottom-3 "
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}

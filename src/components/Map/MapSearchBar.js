@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import forwardGeocode from "../../Services/ForwardGeocode";
+import forwardGeocode from "../../api/ForwardGeocode";
 import useMapContext from "../../hooks/use-MapContext";
-import Loading from "../Loading";
+import Loading from "../common/Loading";
 import { IoIosSearch } from "react-icons/io";
 
 

@@ -8,7 +8,6 @@ function MapProvider({ children }) {
     lng: 77.1786211200175,
   });
   const [waypoints, setWaypoints] = useState({});
-  console.log(waypoints);
   const data = { location, setLocation, waypoints, setWaypoints };
   return <MapContext.Provider value={data}>{children}</MapContext.Provider>;
 }

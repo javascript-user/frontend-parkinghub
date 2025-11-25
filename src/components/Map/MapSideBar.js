@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
-import Input from "../Input";
-import Icon from "../Icon.js";
+import Input from "../common/Input.js";
+import Icon from "../common/Icon.js";
 import { IoIosSearch } from "react-icons/io";
 import useMapContext from "../../hooks/use-MapContext.js";
-import forwardGeocode from "../../Services/ForwardGeocode.js";
+import forwardGeocode from "../../api/ForwardGeocode.js";
 
 export default function MapSideBar({ isOpen, setIsOpen }) {
   const ref = useRef(null);
@@ -23,7 +23,7 @@ export default function MapSideBar({ isOpen, setIsOpen }) {
     e.preventDefault();
 
     forwardGeocode(path.start).then((start) => {
-      // setLocation({ ...start });
+      setLocation({ ...start });
       setWaypoints((prev) => {
         return { ...prev, start: { ...start } };
       });
