@@ -22,6 +22,8 @@ function MapProvider({ children }) {
   const [routes, setRoutes] = useState([]);
   const [selectedRoute, setSelectedRoute] = useState(null);
   const [recentSearches, setRecentSearches] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [mapZoom, setMapZoom] = useState(14);
 
   const addRecentSearch = (search) => {
     setRecentSearches((prev) => {
@@ -29,6 +31,16 @@ function MapProvider({ children }) {
       return [search, ...filtered].slice(0, 5);
     });
   };
+
+  const toggleFavorite = (spotId) => {
+    setFavorites((prev) => 
+      prev.includes(spotId) 
+        ? prev.filter((id) => id !== spotId)
+        : [...prev, spotId]
+    );
+  };
+
+  const isFavorite = (spotId) => favorites.includes(spotId);
 
   const data = {
     location,
@@ -48,6 +60,11 @@ function MapProvider({ children }) {
     setSelectedRoute,
     recentSearches,
     addRecentSearch,
+    favorites,
+    toggleFavorite,
+    isFavorite,
+    mapZoom,
+    setMapZoom,
   };
 
   return <MapContext.Provider value={data}>{children}</MapContext.Provider>;

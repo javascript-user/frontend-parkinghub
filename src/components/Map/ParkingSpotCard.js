@@ -1,10 +1,10 @@
 import React from "react";
-import { FaStar, FaPhone, FaClock, FaMapMarkerAlt } from "react-icons/fa";
+import { FaStar, FaPhone, FaClock, FaMapMarkerAlt, FaHeart } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import useMapContext from "../../hooks/use-MapContext";
 
 function ParkingSpotCard() {
-  const { selectedSpot, setSelectedSpot } = useMapContext();
+  const { selectedSpot, setSelectedSpot, isFavorite, toggleFavorite } = useMapContext();
 
   if (!selectedSpot) return null;
 
@@ -19,6 +19,17 @@ function ParkingSpotCard() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 lg:absolute lg:top-0 lg:left-0 lg:right-auto lg:bottom-auto lg:w-96 bg-white rounded-t-3xl lg:rounded-3xl shadow-2xl p-6 animate-slide-up lg:animate-none z-40">
+      {/* Favorite Button */}
+      <button
+        onClick={() => toggleFavorite(selectedSpot.id)}
+        className="absolute top-4 right-12 p-2 hover:bg-gray-100 rounded-full transition"
+      >
+        <FaHeart 
+          size={20} 
+          className={isFavorite(selectedSpot.id) ? "text-red-500" : "text-gray-400"} 
+        />
+      </button>
+
       {/* Close Button */}
       <button
         onClick={() => setSelectedSpot(null)}

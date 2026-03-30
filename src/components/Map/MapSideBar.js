@@ -12,7 +12,7 @@ import { filterParkingSpots } from "../../api/parkingSpots.js";
 
 export default function MapSideBar({ isOpen, setIsOpen }) {
   const ref = useRef(null);
-  const { setWaypoints, setLocation, parkingSpots, filters, selectedSpot } = useMapContext();
+  const { setWaypoints, setLocation, parkingSpots, filters, selectedSpot, favorites, toggleFavorite, isFavorite } = useMapContext();
   const [path, setPath] = useState({ start: "", end: "" });
   const [filteredResults, setFilteredResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
@@ -126,11 +126,19 @@ export default function MapSideBar({ isOpen, setIsOpen }) {
                     filteredResults.map((spot) => (
                       <div
                         key={spot.id}
-                        className="p-4 border border-gray-200 rounded-lg hover:border-color-primary hover:shadow-md transition cursor-pointer bg-white"
+                        className="p-4 border border-gray-200 rounded-lg hover:border-color-primary hover:shadow-md transition cursor-pointer bg-white group"
                       >
-                        <h4 className="font-bold text-color-dark mb-2">
-                          {spot.name}
-                        </h4>
+                        <div className="flex justify-between items-start mb-2">
+                          <h4 className="font-bold text-color-dark flex-1">
+                            {spot.name}
+                          </h4>
+                          <button
+                            onClick={() => toggleFavorite(spot.id)}
+                            className="text-xl opacity-0 group-hover:opacity-100 transition"
+                          >
+                            {isFavorite(spot.id) ? "❤️" : "🤍"}
+                          </button>
+                        </div>
                         <div className="grid grid-cols-2 gap-2 text-sm mb-3">
                           <div>
                             <p className="text-gray-500 text-xs">Price</p>

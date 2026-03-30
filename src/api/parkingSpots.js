@@ -164,13 +164,20 @@ const parkingSpots = [
 
 export const getParkingSpots = () => parkingSpots;
 
-export const filterParkingSpots = (spots, filters) => {
+export const filterParkingSpots = (spots, filters = {}) => {
   return spots.filter((spot) => {
     if (filters.minPrice && spot.price < filters.minPrice) return false;
     if (filters.maxPrice && spot.price > filters.maxPrice) return false;
     if (filters.minAvailability && spot.availability < filters.minAvailability) return false;
     if (filters.maxDistance && spot.distance > filters.maxDistance) return false;
     if (filters.minRating && spot.rating < filters.minRating) return false;
+    if (filters.searchTerm) {
+      const term = filters.searchTerm.toLowerCase();
+      return (
+        spot.name.toLowerCase().includes(term) ||
+        spot.address.toLowerCase().includes(term)
+      );
+    }
     return true;
   });
 };
@@ -186,5 +193,48 @@ export const calculateDistance = (lat1, lng1, lat2, lng2) => {
       Math.sin(dLng / 2) *
       Math.sin(dLng / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return (R * c).toFixed(2);
+  return parseFloat((R * c).toFixed(2));
+};
+
+export const getNearbySpots = (spots, userLat, userLng, radiusKm = 10) => {
+  return spots.filter((spot) => {
+    const distance = calculateDistance(userLat, userLng, spot.lat, spot.lng);
+    return distance <= radiusKm;
+  });
+};
+
+export const formatSpotData = (spot) => {
+  const availabilityPercentage = ((spot.availability / spot.totalSpots) * 100).toFixed(0);
+  return {
+    ...spot,
+    availabilityPercentage,
+    isAvailable: spot.availability > 0,
+    distanceText: `${spot.distance} km`,
+    priceText: `₹${spot.price}/${spot.priceUnit || "hour"}`,
+    ratingText: `${spot.rating} (${spot.reviews} reviews)`,
+    availabilityText: `${spot.availability} of ${spot.totalSpots} available`
+  };
+};
+
+export const getAvailabilityStatus = (spot) => {
+  if (spot.availability === 0) return "Full";
+  if (spot.availability <= 5) return "Low";
+  if (spot.availability <= spot.totalSpots / 2) return "Moderate";
+  return "Available";
+};
+
+export const sortSpots = (spots, sortBy = "distance") => {
+  const sorted = [...spots];
+  switch (sortBy) {
+    case "distance":
+      return sorted.sort((a, b) => a.distance - b.distance);
+    case "price":
+      return sorted.sort((a, b) => a.price - b.price);
+    case "rating":
+      return sorted.sort((a, b) => b.rating - a.rating);
+    case "availability":
+      return sorted.sort((a, b) => b.availability - a.availability);
+    default:
+      return sorted;
+  }
 };

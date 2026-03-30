@@ -25,18 +25,44 @@ function RoutingMachine({ waypoints }) {
     });
 
     const fetchRoute = async () => {
-      const url = `https://graphhopper.com/api/1/route?point=${start.lat},${start.lng}&point=${end.lat},${end.lng}&vehicle=car&locale=en&key=${process.env.REACT_APP_GRAPH_HOPPER_API_KEY}`;
+      const url = `https://graphhopper.com/api/1/route?point=${start.lat},${start.lng}&point=${end.lat},${end.lng}&vehicle=car&locale=en&ch.disable=true&key=${process.env.REACT_APP_GRAPH_HOPPER_API_KEY}`;
 
       try {
         const { data } = await axios.get(url);
 
         if (!data.paths || !data.paths[0]) throw new Error("No route found");
 
-        const routeData = data.paths[0];
-        const routePolyline = routeData.points;
+        // Get up to 3 route options if available
+        const routes = [];
+        const pathCount = Math.min(data.paths.length, 3);
 
-        // Decode the polyline
-        const decodedRoute = polyline.decode(routePolyline);
+        for (let i = 0; i < pathCount; i++) {
+          const routeData = data.paths[i];
+          const routePolyline = routeData.points;
+
+          // Decode the polyline
+          const decodedRoute = polyline.decode(routePolyline);
+
+          // Calculate route details
+          const distance = (routeData.distance / 1000).toFixed(2); // Convert to km
+          const time = Math.round(routeData.time / 60000); // Convert to minutes
+          const estimatedCost = Math.round(distance * 15); // Assume 15 per km
+
+          const routeInfo = {
+            distance,
+            time,
+            estimatedCost,
+            instructions: routeData.instructions || [],
+            points: decodedRoute,
+            index: i
+          };
+
+          routes.push(routeInfo);
+        }
+
+        // Add the primary route to map
+        const primaryRoute = routes[0];
+        const decodedRoute = primaryRoute.points;
 
         // Add polyline to map with modern styling
         const polylineLayer = L.polyline(decodedRoute, {
@@ -103,21 +129,8 @@ function RoutingMachine({ waypoints }) {
         // Store layers for cleanup
         setRouteLayers([polylineLayer, startMarker, endMarker]);
 
-        // Calculate route details
-        const distance = (routeData.distance / 1000).toFixed(2); // Convert to km
-        const time = Math.round(routeData.time / 60000); // Convert to minutes
-        const estimatedCost = Math.round(distance * 15); // Assume 15 per km
-
-        const routeInfo = {
-          distance,
-          time,
-          estimatedCost,
-          instructions: routeData.instructions || [],
-          points: decodedRoute,
-        };
-
-        setRoutes([routeInfo]);
-        setSelectedRoute(routeInfo);
+        setRoutes(routes);
+        setSelectedRoute(routes[0]);
 
         // Fit map to route bounds
         const bounds = L.latLngBounds(decodedRoute);
