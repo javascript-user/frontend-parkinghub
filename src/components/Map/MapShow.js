@@ -9,6 +9,8 @@ import {
 } from "react-leaflet";
 import { Icon } from "leaflet";
 import RoutingMachine from "./RoutingMachine";
+import ParkingCluster from "./ParkingCluster";
+import RouteDetails from "./RouteDetails";
 import useMapContext from "../../hooks/use-MapContext";
 
 const parkingIcon = new Icon({
@@ -97,9 +99,15 @@ function MapShow() {
           </Marker>
         ))}
 
+        {/* Parking Spots with Clustering */}
+        <ParkingCluster />
+
         <SetViewOnClick />
         {waypoints.end && <RoutingMachine waypoints={waypoints} />}
       </MapContainer>
+
+      {/* Route Details Panel */}
+      <RouteDetails />
     </>
   );
 }
