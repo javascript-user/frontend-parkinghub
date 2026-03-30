@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { getParkingSpots } from "../api/parkingSpots";
 
 const MapContext = createContext();
 
@@ -8,7 +9,47 @@ function MapProvider({ children }) {
     lng: 77.1786211200175,
   });
   const [waypoints, setWaypoints] = useState({});
-  const data = { location, setLocation, waypoints, setWaypoints };
+  const [parkingSpots] = useState(getParkingSpots());
+  const [selectedSpot, setSelectedSpot] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
+  const [filters, setFilters] = useState({
+    minPrice: 0,
+    maxPrice: 100,
+    minAvailability: 0,
+    maxDistance: 10,
+    minRating: 0,
+  });
+  const [routes, setRoutes] = useState([]);
+  const [selectedRoute, setSelectedRoute] = useState(null);
+  const [recentSearches, setRecentSearches] = useState([]);
+
+  const addRecentSearch = (search) => {
+    setRecentSearches((prev) => {
+      const filtered = prev.filter((s) => s !== search);
+      return [search, ...filtered].slice(0, 5);
+    });
+  };
+
+  const data = {
+    location,
+    setLocation,
+    waypoints,
+    setWaypoints,
+    parkingSpots,
+    selectedSpot,
+    setSelectedSpot,
+    userLocation,
+    setUserLocation,
+    filters,
+    setFilters,
+    routes,
+    setRoutes,
+    selectedRoute,
+    setSelectedRoute,
+    recentSearches,
+    addRecentSearch,
+  };
+
   return <MapContext.Provider value={data}>{children}</MapContext.Provider>;
 }
 
