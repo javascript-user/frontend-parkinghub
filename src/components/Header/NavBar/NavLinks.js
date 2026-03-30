@@ -17,11 +17,11 @@ function NavLinks() {
 
   function NavLinksItem({ id, label, href }) {
     return (
-      <div className="flex text-lg md:text-sm lg:text-xl">
+      <div className="flex">
         <Link
           to={href}
           id={id}
-          className="px-4 py-4 transition duration-150 delay-150 hover:text-color-primary"
+          className="px-3 py-2 text-base font-medium text-color-dark transition duration-300 hover:text-color-primary border-b-2 border-transparent hover:border-color-primary md:text-sm lg:text-base lg:px-4 lg:py-2"
         >
           {label}
         </Link>

@@ -4,7 +4,7 @@ import Services from "./Services/Services";
 
 function MainContent() {
   return (
-    <main className="flex flex-col flex-1 ">
+    <main className="flex flex-col flex-1 bg-color-light">
       <Hero />
       <Testimonials />
       <Services />

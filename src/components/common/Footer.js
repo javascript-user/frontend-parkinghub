@@ -8,63 +8,62 @@ import { FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
   return (
-    <footer className=" bg-[#2C3E50] text-white">
-      <div className=" md:px-10 md:grid md:grid-flow-col md:grid-cols-3 gap-x-10 md:py-10 md:items-center">
-        <div className="flex flex-col px-4 py-4 ">
-          <Logo className={"text-xl px-3 py-2 md:text-2xl "} inverted={true} />
+    <footer className="bg-color-dark text-white">
+      <div className="md:px-10 md:grid md:grid-flow-col md:grid-cols-3 gap-x-10 md:py-16 md:items-start">
+        <div className="flex flex-col px-4 py-6 md:py-0">
+          <Logo className={"text-2xl md:text-2xl mb-4"} inverted={true} />
 
-          <p className="px-3 py-2 text-xs leading-normal md:text-base text-balance">
-            ParkingHub is a smart parking and mobility solutions firm that
-            designs solutions to manage parking spaces and eliminate the pain
-            that vehicle owners face every day when parking in their city.
+          <p className="text-sm leading-relaxed text-gray-300 text-balance max-w-xs">
+            ParkingHub is a smart parking and mobility solutions firm that designs solutions to manage parking spaces and eliminate the pain that vehicle owners face every day when parking in their city.
           </p>
         </div>
 
-          <div className="grid grid-rows-1 px-4 py-4 gap-y-4 ">
-            <h3 className="text-sm font-semibold md:text-lg">SOCIAL NETWORKS</h3>
-            <div className="grid grid-rows-3 px-4 py-4 gap-y-4 md:gap-y-4 md:py-3 md:px-3">
-              <a href="https://valetez.com" className="flex transition duration-300 ease-in-out gap-x-4 hover:text-color-primary ">
-                <IoLogoInstagram className="md:size-5"/>
-                <span className="text-xs md:text-base">@parking hub app</span>
-              </a>
+        <div className="grid grid-rows-1 px-4 py-6 md:py-0 gap-y-4">
+          <h3 className="text-base font-bold text-white md:text-lg">SOCIAL NETWORKS</h3>
+          <div className="grid grid-rows-3 gap-y-3">
+            <a href="https://instagram.com" className="flex items-center transition duration-300 ease-in-out gap-x-4 text-gray-300 hover:text-color-secondary">
+              <IoLogoInstagram className="md:size-5 flex-shrink-0"/>
+              <span className="text-sm md:text-base">@parkinghub_app</span>
+            </a>
 
-              <a href="https://valetez.com" className="flex transition duration-300 ease-in-out gap-x-4 hover:text-color-primary ">
-               
-                <FaLinkedinIn className="md:size-5" />
-                <span className="text-xs md:text-base">@parkingHub-services-pvt-ltd</span>
-              </a>
+            <a href="https://linkedin.com" className="flex items-center transition duration-300 ease-in-out gap-x-4 text-gray-300 hover:text-color-secondary">
+              <FaLinkedinIn className="md:size-5 flex-shrink-0" />
+              <span className="text-sm md:text-base">ParkingHub Services</span>
+            </a>
 
-              <a href="https://valetez.com" className="flex transition duration-300 ease-in-out gap-x-4 hover:text-color-primary ">
-                <FaXTwitter className="md:size-5"/>
-                <span className="text-xs md:text-base">@parkingHub</span>
-              </a>
-            </div>
+            <a href="https://twitter.com" className="flex items-center transition duration-300 ease-in-out gap-x-4 text-gray-300 hover:text-color-secondary">
+              <FaXTwitter className="md:size-5 flex-shrink-0"/>
+              <span className="text-sm md:text-base">@parkingHub</span>
+            </a>
           </div>
-          <div className="grid grid-rows-1 px-4 py-4 gap-y-4 ">
-            <h6 className="text-sm font-semibold md:text-lg">ADDRESS LIST</h6>
-            <div className="grid grid-rows-3 px-4 py-4 gap-y-4 md:gap-y-4 md:py-3 md:px-3">
-            <div className="flex gap-x-4">
-              <FaLocationDot className="md:size-5" />
-              <span className="text-xs md:text-base">
-                L-block Sangam Vihar
-                New Delhi 110080
+        </div>
+
+        <div className="grid grid-rows-1 px-4 py-6 md:py-0 gap-y-4">
+          <h6 className="text-base font-bold text-white md:text-lg">ADDRESS & CONTACT</h6>
+          <div className="grid grid-rows-3 gap-y-3">
+            <div className="flex gap-x-3">
+              <FaLocationDot className="md:size-5 flex-shrink-0 mt-1 text-color-secondary" />
+              <span className="text-sm md:text-base text-gray-300">
+                L-block Sangam Vihar, New Delhi 110080
               </span>
             </div>
-            <div className="flex gap-x-4">
-              <FaPhone className="md:size-5 " />
-              <span className="text-xs md:text-base">+91 9560875675</span>
+            <div className="flex gap-x-3">
+              <FaPhone className="md:size-5 flex-shrink-0 mt-1 text-color-secondary" />
+              <span className="text-sm md:text-base text-gray-300">+91 9560875675</span>
             </div>
-            <div className="flex gap-x-4 ">
-              <HiOutlineMailOpen className="md:size-5" />
-              <span className="text-xs md:text-base">contact@parkinghub.com</span>
-            </div>
+            <div className="flex gap-x-3">
+              <HiOutlineMailOpen className="md:size-5 flex-shrink-0 mt-1 text-color-secondary" />
+              <span className="text-sm md:text-base text-gray-300">contact@parkinghub.com</span>
             </div>
           </div>
-          
+        </div>
       </div>
-      <p className="py-6 text-xs text-center md:text-sm md:py-2">
-          Copyright © 2024 Parkinghub, Inc.
-          </p>
+      
+      <div className="border-t border-gray-700">
+        <p className="py-6 text-sm text-center text-gray-400 md:py-4">
+          Copyright © 2024 Parkinghub, Inc. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 }
