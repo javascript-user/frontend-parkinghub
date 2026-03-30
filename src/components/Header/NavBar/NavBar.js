@@ -12,8 +12,8 @@ function NavBar() {
   const [search, setSearch] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-color-border shadow-sm">
-      <div className="flex items-center justify-between w-full h-16 px-4 md:h-20 md:px-10 lg:justify-between">
+    <nav className="sticky top-0 z-50 bg-white border-b border-color-border shadow-md">
+      <div className="flex items-center justify-between w-full h-16 px-4 md:h-20 md:px-12 lg:justify-between">
         <div className="relative flex items-center gap-4 h-full md:gap-8 lg:w-2/6">
           <div className="md:hidden cursor-pointer text-color-primary">
             <HiOutlineMenu size={24} onClick={() => setClick(!click)} />

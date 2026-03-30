@@ -13,20 +13,20 @@ function Hero() {
   };
 
   return (
-    <section className="bg-gradient-to-br from-color-light via-white to-blue-50 py-12 md:py-20">
-      <div className="flex flex-col items-center gap-8 md:flex-row md:justify-center md:gap-12">
+    <section className="bg-gradient-to-br from-color-light via-white to-blue-50 py-16 md:py-28">
+      <div className="flex flex-col items-center gap-10 md:flex-row md:justify-center md:gap-16 px-4 md:px-8">
         <div className="md:hidden">
-          <img src={hero} alt="Hero Animation" className="object-cover rounded-lg shadow-sm" />
+          <img src={hero} alt="Hero Animation" className="object-cover rounded-xl shadow-md w-full max-w-sm" />
         </div>
 
-        <div className="px-4 text-center md:w-1/2 lg:w-2/5 md:text-left max-md:py-6">
-          <h1 className="mb-4 text-3xl font-bold font-Poppins md:text-4xl lg:text-5xl leading-tight text-color-dark">
+        <div className="text-center md:w-1/2 lg:w-2/5 md:text-left max-md:py-6">
+          <h1 className="mb-6 text-4xl font-bold font-Poppins md:text-5xl lg:text-6xl leading-tight text-color-dark">
             <span className="block">Experience True</span>
-            <span className="block text-color-primary">Smart Parking</span>
-            <span className="block">With Parking hub</span>
+            <span className="block bg-gradient-to-r from-color-primary to-color-secondary bg-clip-text text-transparent">Smart Parking</span>
+            <span className="block">With ParkingHub</span>
           </h1>
 
-          <p className="mb-8 text-lg text-color-accent md:text-base lg:text-lg leading-relaxed">
+          <p className="mb-10 text-lg text-color-accent md:text-base lg:text-lg leading-relaxed">
             We are parking experts with real-time slots availability and secure, seamless parking solutions.
           </p>
 
@@ -34,14 +34,14 @@ function Hero() {
             <Button
               onClick={handleClickFindOut}
               variant="primary"
-              className="lg:text-base lg:px-8 lg:py-3"
+              className="lg:text-base lg:px-8 lg:py-4 font-semibold"
             >
               FIND PARKING
             </Button>
             <Button
               onClick={handleClickRentOut}
               variant="secondary"
-              className="lg:text-base lg:px-8 lg:py-3"
+              className="lg:text-base lg:px-8 lg:py-4 font-semibold"
             >
               RENT OUT PARKING
             </Button>
@@ -49,7 +49,7 @@ function Hero() {
         </div>
 
         <div className="hidden md:block md:w-1/2 lg:w-2/5">
-          <img src={Parking} alt="ParkingPNG" className="mx-auto drop-shadow-lg" />
+          <img src={Parking} alt="ParkingPNG" className="mx-auto drop-shadow-lg hover:drop-shadow-xl transition duration-300" />
         </div>
       </div>
     </section>

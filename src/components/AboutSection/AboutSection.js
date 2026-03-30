@@ -35,12 +35,12 @@ function AboutSection() {
     <div className="min-h-screen mt-16 lg:mt-24">
       {/* Hero Section */}
       <div className="relative">
-        <div className="w-full bg-[#ffa31a] flex flex-col items-center px-4 py-12 lg:py-16">
+        <div className="w-full bg-gradient-to-br from-color-primary to-blue-900 flex flex-col items-center px-4 py-16 lg:py-24">
           <div className="flex flex-col items-center space-y-6 lg:space-y-10">
             <h1 className="text-4xl font-bold text-center text-white lg:text-7xl">
               ABOUT US
             </h1>
-            <p className="w-full px-4 text-sm leading-relaxed text-center text-white lg:w-2/5 lg:text-lg">
+            <p className="w-full px-4 text-base leading-relaxed text-center text-gray-100 lg:w-2/5 lg:text-lg">
               ParkingHub is a smart parking solutions firm that aims to simplify
               and transform the parking experience for customers while helping
               property owners to optimize their parking spaces with efficient
@@ -50,11 +50,11 @@ function AboutSection() {
         </div>
 
         {/* Hero Image */}
-        <div className="flex justify-center px-4 mt-16 lg:mt-44">
+        <div className="flex justify-center px-4 mt-20 lg:mt-44">
           <img
             src={group}
             alt="ParkingHub team"
-            className="w-full h-auto rounded-lg shadow-2xl lg:w-3/5"
+            className="w-full h-auto rounded-2xl shadow-2xl lg:w-3/5 hover:shadow-3xl transition duration-300"
           />
         </div>
       </div>
@@ -106,12 +106,12 @@ function AboutSection() {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="p-6 space-y-3 transition-colors bg-white border border-gray-300 shadow-lg lg:p-8 rounded-2xl hover:border-green-500 lg:space-y-4"
+                className="p-6 space-y-3 transition-all bg-white border border-color-border shadow-md lg:p-8 rounded-2xl hover:border-color-primary hover:shadow-lg lg:space-y-4"
               >
-                <h2 className="text-lg font-bold lg:text-xl">
+                <h2 className="text-xl font-bold lg:text-2xl text-color-dark">
                   {feature.title}
                 </h2>
-                <p className="text-sm leading-relaxed text-slate-500">
+                <p className="text-base leading-relaxed text-color-accent">
                   {feature.description}
                 </p>
               </div>
@@ -154,7 +154,7 @@ function AboutSection() {
             </p>
             <button
               onClick={handleClickContactForm}
-              className="px-6 py-3 text-base lg:text-xl font-semibold text-white bg-[#ffa31a] rounded-full w-full lg:w-44 hover:bg-black transition"
+              className="px-8 py-4 text-base lg:text-xl font-semibold text-white bg-color-primary rounded-lg w-full lg:w-44 hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg"
             >
               Join Us
             </button>
@@ -163,21 +163,21 @@ function AboutSection() {
       </div>
 
       {/* CTA Section */}
-      <div className="flex items-center justify-center w-full px-4 py-12 lg:py-24">
-        <div className="bg-[#ffa31a] rounded-2xl lg:rounded-3xl flex flex-col lg:flex-row justify-center lg:justify-evenly items-center w-full lg:w-3/4 p-8 lg:p-12 gap-8 lg:gap-0">
-          <div className="flex flex-col justify-center w-full space-y-6 lg:w-2/5 lg:space-y-10">
-            <h2 className="text-xl font-bold text-center text-white lg:text-2xl lg:text-left">
+      <div className="flex items-center justify-center w-full px-4 py-16 lg:py-28">
+        <div className="bg-gradient-to-r from-color-primary to-blue-900 rounded-3xl flex flex-col lg:flex-row justify-center lg:justify-evenly items-center w-full lg:w-3/4 p-10 lg:p-16 gap-10 lg:gap-0 shadow-2xl">
+          <div className="flex flex-col justify-center w-full space-y-8 lg:w-2/5 lg:space-y-10">
+            <h2 className="text-2xl font-bold text-center text-white lg:text-3xl lg:text-left">
               Have a question? Get in touch
             </h2>
             <button
               onClick={handleClickContactForm}
-              className="w-full px-6 py-3 text-base font-semibold text-white transition bg-black rounded-full lg:text-lg lg:w-44 hover:bg-white hover:text-black"
+              className="w-full px-8 py-4 text-base font-semibold text-color-primary transition bg-white rounded-lg lg:text-lg lg:w-48 hover:bg-gray-100 shadow-md hover:shadow-lg"
             >
               Contact Us
             </button>
           </div>
           <div className="flex justify-center w-full lg:w-2/5">
-            <p className="w-full text-sm leading-relaxed text-center text-white lg:w-4/5 lg:text-left">
+            <p className="w-full text-base leading-relaxed text-center text-gray-100 lg:w-4/5 lg:text-left">
               Contact us today to experience hassle-free parking solutions with
               ParkingHub. Our team is ready to assist you with any queries or
               concerns you may have.

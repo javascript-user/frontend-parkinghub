@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,21 +13,39 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     @apply font-bold text-color-dark;
+    letter-spacing: -0.02em;
   }
 
   h1 {
     @apply text-5xl leading-tight;
+    font-weight: 800;
   }
 
   h2 {
     @apply text-4xl leading-snug;
+    font-weight: 700;
   }
 
   h3 {
     @apply text-2xl leading-snug;
+    font-weight: 700;
+  }
+
+  h4 {
+    @apply text-xl font-semibold;
   }
 
   p {
     @apply text-base leading-relaxed text-color-accent;
+  }
+
+  /* Better contrast for links */
+  a {
+    @apply text-color-primary hover:text-color-secondary transition duration-200;
+  }
+
+  /* Better focus states */
+  button:focus-visible, a:focus-visible {
+    @apply outline-none ring-2 ring-color-primary ring-offset-2;
   }
 }
