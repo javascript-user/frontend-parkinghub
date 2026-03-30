@@ -12,32 +12,33 @@ function NavBar() {
   const [search, setSearch] = useState(false);
 
   return (
-    <nav className="sticky top-0 bg-white">
-      <div className="flex items-center justify-between w-full h-16 border-b-2 md:h-20 md:justify-evenly lg:justify-between">
-        <div className="relative flex items-center w-3/5 h-full justify-evenly md:w-fit md:h-3/5 lg:w-2/6 lg:h-full">
-          <div className="md:hidden">
-            <HiOutlineMenu size={25} onClick={() => setClick(!click)} />
+    <nav className="sticky top-0 z-50 bg-white border-b border-color-border shadow-md">
+      <div className="flex items-center justify-between w-full h-16 px-4 md:h-20 md:px-12 lg:justify-between">
+        <div className="relative flex items-center gap-4 h-full md:gap-8 lg:w-2/6">
+          <div className="md:hidden cursor-pointer text-color-primary">
+            <HiOutlineMenu size={24} onClick={() => setClick(!click)} />
           </div>
 
           {click && (
             <>
               {/* Backdrop overlay */}
               <div
-                className="fixed inset-0 z-[100] bg-black bg-opacity-50"
+                className="fixed inset-0 z-40 bg-black bg-opacity-30"
                 onClick={() => setClick(false)}
               ></div>
 
               {/* Sidebar */}
-              <div className="fixed top-0 left-0 z-[110] h-screen bg-orange-200 shadow-2xl w-60">
-                <div className="flex items-center h-16 px-5">
+              <div className="fixed top-0 left-0 z-50 h-screen bg-white shadow-lg w-64 border-r border-color-border">
+                <div className="flex items-center justify-between h-16 px-5">
+                  <Logo className="text-lg" />
                   <HiOutlineMenu
-                    size={25}
+                    size={24}
                     onClick={() => setClick(!click)}
-                    className="cursor-pointer"
+                    className="cursor-pointer text-color-primary"
                   />
                 </div>
 
-                <div className="flex flex-col px-5 py-4 space-y-4">
+                <div className="flex flex-col px-5 py-4 gap-4">
                   <NavLinks />
                 </div>
               </div>
@@ -46,45 +47,46 @@ function NavBar() {
 
           <div>
             <Link to="/">
-              <Logo className="text-lg md:text-xl lg:text-4xl" />
+              <Logo className="text-lg md:text-xl lg:text-2xl" />
             </Link>
           </div>
         </div>
 
-        <div className="hidden md:w-2/6 max-md:hidden lg:w-1/6">
+        <div className="hidden md:block md:w-1/4 lg:w-1/5">
           <Input
             type={"text"}
             placeholder={"Search location..."}
-            className={"w-full h-12 lg:h-16"}
+            className={"w-full h-10 lg:h-12"}
           />
         </div>
 
-        <div className="flex items-center w-2/5 h-full justify-evenly gap-x-6">
-          <div className="md:hidden">
+        <div className="flex items-center gap-4 lg:gap-8">
+          <div className="md:hidden cursor-pointer text-color-primary">
             <IoSearch
-              size={25}
-              className=""
+              size={20}
               onClick={() => setSearch(!search)}
             />
           </div>
           {search && (
-            <div className="absolute hidden right-24 top-12">
+            <div className="absolute right-16 top-16">
               <Input
                 type={"text"}
                 placeholder={"Search location..."}
-                className={"w-52"}
+                className={"w-48"}
               />
             </div>
           )}
 
-          <div className="flex max-md:hidden lg:gap-x-8">
+          <div className="hidden md:flex gap-2 lg:gap-8">
             <NavLinks className="" />
           </div>
-          <div className="p-0.5 transition duration-200 ease-in-out delay-200 border-2 border-black group hover:bg-black hover:text-white lg:p-2">
-            <Link to="/login">
-              <FaUserAstronaut className="icon hover:group" size={30} />
-            </Link>
-          </div>
+
+          <Link
+            to="/login"
+            className="p-2 transition duration-300 rounded-lg border-2 border-color-primary text-color-primary hover:bg-color-primary hover:text-white flex items-center justify-center"
+          >
+            <FaUserAstronaut size={20} />
+          </Link>
         </div>
       </div>
     </nav>

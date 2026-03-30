@@ -38,25 +38,25 @@ function ContactForm() {
   ];
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 bg-gray-50">
-      <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-md lg:max-w-5xl bg-orange-200 shadow-2xl rounded-2xl lg:rounded-3xl overflow-hidden lg:h-[600px]">
+    <div className="flex items-center justify-center min-h-screen p-4 bg-color-light">
+      <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-md lg:max-w-5xl bg-gradient-to-br from-color-primary to-blue-900 shadow-2xl rounded-3xl overflow-hidden lg:h-[600px]">
         {/* Form Section */}
-        <div className="flex flex-col items-center w-full h-full p-6 py-10 space-y-6 lg:w-1/2 lg:p-10 lg:space-y-8">
+        <div className="flex flex-col items-center w-full h-full p-8 py-12 space-y-8 lg:w-1/2 lg:p-12 lg:space-y-10">
           {/* Header */}
-          <div className="flex flex-col items-center space-y-4">
-            <h1 className="text-2xl font-semibold text-white lg:text-3xl">
+          <div className="flex flex-col items-center space-y-6">
+            <h1 className="text-3xl font-bold text-white lg:text-4xl text-center">
               Get In Touch
             </h1>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-3 p-3 bg-orange-100 lg:gap-4 lg:p-4 rounded-2xl">
+            <div className="flex items-center gap-4 p-4 bg-blue-800 lg:gap-5 lg:p-5 rounded-2xl">
               {socialLinks.map(({ icon: Icon, color, label }) => (
                 <button
                   key={label}
                   aria-label={label}
-                  className={`w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center bg-orange-400 rounded-full transition-all duration-300 ${color} hover:scale-110 active:scale-95`}
+                  className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-color-secondary rounded-full transition-all duration-300 hover:scale-110 active:scale-95 hover:shadow-lg`}
                 >
-                  <Icon className="text-lg text-white lg:text-xl" />
+                  <Icon className="text-lg text-white lg:text-2xl" />
                 </button>
               ))}
             </div>
@@ -65,7 +65,7 @@ function ContactForm() {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col w-full space-y-5 lg:space-y-4"
+            className="flex flex-col w-full space-y-5 lg:space-y-5"
           >
             <input
               type="text"
@@ -74,7 +74,7 @@ function ContactForm() {
               onChange={handleChange}
               value={value.name}
               required
-              className="w-full px-4 py-2.5 lg:py-3 text-sm lg:text-base bg-orange-100 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition placeholder:text-gray-600"
+              className="w-full px-5 py-3 lg:py-4 text-base lg:text-lg bg-blue-800 border border-blue-700 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-color-secondary transition shadow-sm"
             />
             <input
               type="tel"
@@ -84,7 +84,7 @@ function ContactForm() {
               value={value.phone}
               required
               pattern="[0-9]{10}"
-              className="w-full px-4 py-2.5 lg:py-3 text-sm lg:text-base bg-orange-100 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition placeholder:text-gray-600"
+              className="w-full px-5 py-3 lg:py-4 text-base lg:text-lg bg-blue-800 border border-blue-700 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-color-secondary transition shadow-sm"
             />
             <input
               type="email"
@@ -93,7 +93,7 @@ function ContactForm() {
               onChange={handleChange}
               value={value.email}
               required
-              className="w-full px-4 py-2.5 lg:py-3 text-sm lg:text-base bg-orange-100 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition placeholder:text-gray-600"
+              className="w-full px-5 py-3 lg:py-4 text-base lg:text-lg bg-blue-800 border border-blue-700 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-color-secondary transition shadow-sm"
             />
             <textarea
               name="query"
@@ -102,11 +102,11 @@ function ContactForm() {
               value={value.query}
               required
               rows="4"
-              className="w-full px-4 py-2.5 lg:py-3 text-sm lg:text-base bg-orange-100 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition resize-none placeholder:text-gray-600"
+              className="w-full px-5 py-3 lg:py-4 text-base lg:text-lg bg-blue-800 border border-blue-700 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-color-secondary transition resize-none shadow-sm"
             />
             <button
               type="submit"
-              className="w-full py-2.5 lg:py-3 text-base lg:text-lg font-medium text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700 rounded-full transition shadow-md"
+              className="w-full py-3 lg:py-4 text-lg lg:text-xl font-semibold text-color-primary bg-white hover:bg-gray-100 active:scale-95 rounded-lg transition shadow-lg hover:shadow-xl"
             >
               Submit
             </button>
@@ -114,11 +114,11 @@ function ContactForm() {
         </div>
 
         {/* Image Section - Hidden on mobile */}
-        <div className="items-center justify-center hidden w-1/2 h-full lg:flex bg-gradient-to-br from-orange-100 to-orange-50">
+        <div className="items-center justify-center hidden w-1/2 h-full lg:flex bg-gradient-to-br from-blue-800 to-blue-700">
           <img
             src={contact}
             alt="contact illustration"
-            className="object-contain w-4/5 h-auto"
+            className="object-contain w-4/5 h-auto drop-shadow-lg"
           />
         </div>
       </div>
